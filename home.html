@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Sleep - Website Truyện Kinh Dị</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #111111;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+        }
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+        }
+        .site-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        nav {
+            background-color: #222222;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-list {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-list li {
+            margin-right: 20px;
+        }
+        .nav-list a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-list a:hover {
+            color: #ffeb3b;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            background-color: #333333;
+            padding: 10px;
+            list-style: none;
+            margin: 0;
+            border-radius: 5px;
+        }
+        .nav-list li:hover .submenu {
+            display: block;
+        }
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        .search-box input[type="text"] {
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+        .search-box button {
+            padding: 5px 10px;
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .search-box button:hover {
+            background-color: #555555;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .featured-stories, .latest-stories {
+            margin-bottom: 40px;
+        }
+        .story-highlight {
+            display: flex;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .story-highlight img {
+            width: 200px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .highlight-details {
+            color: #ff5252;
+        }
+        .highlight-details h3 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+        .highlight-details p {
+            margin: 10px 0;
+        }
+        .read-more {
+            color: #ffeb3b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .story-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .story-item {
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 5px;
+            flex: 1 1 calc(33.333% - 20px);
+            box-sizing: border-box;
+        }
+        .story-title {
+            font-size: 1.5rem;
+            color: #ff5252;
+            text-decoration: none;
+        }
+        .story-title:hover {
+            text-decoration: underline;
+        }
+        .forms-section {
+            margin-top: 20px;
+        }
+        .form {
+            background-color: #333333;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        .form h2 {
+            color: #ff5252;
+        }
+        .form input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .form button {
+            padding: 10px 20px;
+            background-color: #333333;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .form button:hover {
+            background-color: #555555;
+        }
+        .social-login {
+            margin-top: 15px;
+        }
+        footer {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .social-icons {
+            margin-top: 10px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+        }
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="logo.png" alt="No Sleep Logo" class="logo">
+            <h1 class="site-title">No Sleep - Truyện Kinh Dị</h1>
+        </div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#">Trang Chủ</a></li>
+                <li><a href="#">Khám Phá</a></li>
+                <li><a href="#">Truyện Kinh Dị</a></li>
+                <li><a href="#">Điều Luật</a></li>
+                <li><a href="#">Truyện Ma Việt Nam</a>
+                    <ul class="submenu">
+                        <li><a href="#">Truyện Ma Dân Gian</a></li>
+                        <li><a href="#">Truyện Ma Hiện Đại</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Góc Phong Thủy</a></li>
+                <li><a href="#">Video</a></li>
+                <li><a href="#">Creepypasta</a></li>
+                <li><a href="#" onclick="document.getElementById('login-form').style.display='block'; return false;">Đăng Nhập</a></li>
+                <li><a href="#" onclick="document.getElementById('register-form').style.display='block'; return false;">Đăng Ký</a></li>
+            </ul>
+            <div class="search-box">
+                <input type="text" placeholder="Tìm kiếm truyện...">
+                <button type="button" onclick="searchStories()">Tìm</button>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        <!-- Phần nội dung chính của trang chủ -->
+        <section class="featured-stories">
+            <h2>Truyện Nổi Bật</h2>
+            <div class="story-highlight">
+                <img src="highlight.jpg" alt="Truyện nổi bật">
+                <div class="highlight-details">
+                    <h3>Truyện Ma Đặc Biệt</h3>
+                    <p>Truyện kể về những hiện tượng kỳ lạ và những bóng ma xuất hiện không ngờ...</p>
+                    <a href="#" class="read-more">Đọc Ngay</a>
+                </div>
+            </div>
+        </section>
+        <section class="latest-stories">
+            <h2>Truyện Mới Nhất</h2>
+            <div class="story-list">
+                <div class="story-item">
+                    <a href="#" class="story-title">Truyện Kinh Dị 1</a>
+                    <p>Ngày hôm đó, tất cả mọi thứ đều thay đổi khi tôi nhìn thấy một bóng hình đứng lặng lẽ phía cuối con đường...</p>
+                </div>
+                <div class="story-item">
+                    <a href="#" class="story-title">Truyện Kinh Dị 2</a>
+                    <p>Tiếng thì thầm ấy cứ vang vọng mỗi đêm, như muốn nói với tôi một điều gì đó mà tôi không bao giờ hiểu...</p>
+                </div>
+                <div class="story-item">
+                    <a href="#" class="story-title">Truyện Ma Dân Gian</a>
+                    <p>Trong một ngôi làng xa xôi, câu chuyện về một hồn ma oan khuất đã được truyền tai nhau qua nhiều thế hệ...</p>
+                </div>
+            </div>
+        </section>
+        <!-- Form đăng nhập và đăng ký -->
+        <section class="forms-section">
+            <form id="login-form" class="form" style="display: none;">
+                <h2>Đăng Nhập</h2>
+                <input type="text" id="username" name="username" placeholder="Tên đăng nhập" required>
+                <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+                <button type="button" onclick="login()">Đăng Nhập</button>
+                <div class="social-login">
+                    <div class="g-signin2" data-onsuccess="onGoogleSignIn"></div>
+                    <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                </div>
+            </form>
+            <form id="register-form" class="form" style="display: none;">
+                <h2>Đăng Ký</h2>
+                <input type="text" id="reg-username" name="reg-username" placeholder="Tên đăng nhập" required>
+                <input type="email" id="reg-email" name="reg-email" placeholder="Email" required>
+                <input type="password" id="reg-password" name="reg-password" placeholder="Mật khẩu" required>
+                <button type="button" onclick="register()">Đăng Ký</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p>No Sleep - Truyện Kinh Dị &copy; 2024. Mọi quyền được bảo lưu.</p>
+            <div class="social-icons">
+                <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+                <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
